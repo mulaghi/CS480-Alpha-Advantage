@@ -8,11 +8,24 @@
 		<form id="search-stock">
 		<input type="text" name="symbol" id="search-bar" placeholder="Search by symbol">
 		<button type= "submit">Search</button>
+		<button id= "addButton" > Add </button>
+		<button id= "deleteButton"  > Delete </button>
+		<button id= "updateButton"  > Update </button>
 		</form>
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-	<div id = "container">
-		<div id = "chart"></div>
+	<div class="slot"> 
+		<h2> Current Stock</h2>
+		<p id ="slot1-stock"> </p>
+	</div>
+	<div>
+		<slot id = "slot1">
+			<h2>Slot 1</h2>
+		</slot>
+	</div>
+	<div>
+		<slot id = "slot2">
+			<h2>Slot 2</h2>
+		</slot>
 	</div>
 <script src="script.js" defer></script>
 <link rel="stylesheet" href="style.css">
