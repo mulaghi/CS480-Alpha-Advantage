@@ -74,7 +74,7 @@ if (storageInput)
 }
 
 
-storageInput.addEventListener('input', letter => 
+storageInput.addEventListener('addStock', letter => 
 {
 	text.textContent = letter.target.value; 
 
