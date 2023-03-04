@@ -63,3 +63,33 @@ yaxis: {
 },
 };
 
+const storageInput = document.querySelector('.storage');
+const text = document.querySelector('.text');
+const button = document.querySelector('.addStock');
+const storedInput = localStorage.getItem('slot1');
+
+if (storageInput)
+{
+	text.textcontent = storedInput; 
+}
+
+
+storageInput.addEventListener('input', letter => 
+{
+	text.textContent = letter.target.value; 
+
+})
+
+const saveToLocalStorage = () => 
+{
+	localStorage.setItem('slot1', text.textContent); 
+}
+
+button.addEventListener('addStock', saveToLocalStorage);
+
+
+
+
+
+
+
