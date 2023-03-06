@@ -3,28 +3,35 @@
 <head>
 	<title>Stocks Program</title>
 	<script src="script1.js" defer></script>
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 	<link rel="stylesheet" href="style1.css">
 </head>
 <body>
-	 <div class="banner">
-        	<h1> Stock Program </h1>
-    	</div>
- 	<div id="banner"></div>
-	<slot id="slot1" class= "slot">
-			<input class="storage" type="text" id="input" placeholder="Enter Stock...">
-			<button id= "addButton" > Add </button>
-			<span id = "hiddenSpan">
-    			<label for="dropdown"> </label>
-				<select name= "dropdown" id="dropdown">
-				<option value= "delete"> delete </option>
-				<option value= "update"> update </option>
-				<option value= "information"> information </option>
-				</select>	
-			</span>
-	</slot>
+	<h1> Simple Stock Program </h1>
+		<p> Stocks n Stuff </p>
+	<div id="search-box">
+		<form id="search-stock">
+		<input type="text" name="symbol" id="search-bar" placeholder="Search by symbol">
+		<button type= "submit">Search</button>
+		</form>
+	</div>
+	<slot id="slot1" class= "slot">		
+		<button id= "addButton" > Add </button>
+		<span id = "hiddenSpan">
+    		<label for="dropdown"> </label>
+			<select name= "dropdown" id="dropdown">
+			<option value= "delete"> delete </option>
+			<option value= "update"> update </option>
+			<option value= "information"> information </option>
+			</select>	
+		</span>
+		<div id="storage" class="storage">
+				<p id="symbol">Placeholder symbol.</p>
+			<p id="price">Placeholder price.</p>
+		</div>
+		</slot>
 	<slot id="slot2" class= "slot">
-			<input class="storage" type="text" id="input" placeholder="Enter Stock...">
-			<button id= "addButton" > Add </button>
+		<button id= "addButton" > Add </button>
 			<span id = "hiddenSpan">
     			<label for="dropdown"> </label>
 				<select name= "dropdown" id="dropdown">
@@ -33,9 +40,12 @@
 				<option value= "information"> information </option>
 				</select>	
 			</span>
+			<div id="storage" class="storage">
+				<p id="symbol">Placeholder symbol.</p>
+			<p id="price">Placeholder price.</p>
+		</div>
 	</slot>
 	<slot id="slot3" class= "slot">
-			<input class="storage" type="text" id="input" placeholder="Enter Stock...">
 			<button id= "addButton" > Add </button>
 			<span id = "hiddenSpan">
     			<label for="dropdown"> </label>
@@ -45,9 +55,12 @@
 				<option value= "information"> information </option>
 				</select>	
 			</span>
+			<div id="storage" class="storage">
+				<p id="symbol">Placeholder symbol.</p>
+			<p id="price">Placeholder price.</p>
+		</div>
 	</slot>
 	<slot id="slot4" class= "slot">
-			<input class="storage" type="text" id="input" placeholder="Enter Stock...">
 			<button id= "addButton" > Add </button>
 			<span id = "hiddenSpan">
     			<label for="dropdown"> </label>
@@ -57,9 +70,12 @@
 				<option value= "information"> information </option>
 				</select>	
 			</span>
+			<div id="storage" class="storage">
+			<p id="symbol">Placeholder symbol.</p>
+			<p id="price">Placeholder price.</p>
+		</div>
 	</slot>
 	<slot id="slot5" class= "slot">
-			<input class="storage" type="text" id="input" placeholder="Enter Stock...">
 			<button id= "addButton" > Add </button>
 			<span id = "hiddenSpan">
     			<label for="dropdown"> </label>
@@ -69,9 +85,12 @@
 				<option value= "information"> information </option>
 				</select>	
 			</span>
+			<div id="storage" class="storage">
+				<p id="symbol">Placeholder symbol.</p>
+			<p id="price">Placeholder price.</p>
+		</div>
 	</slot>
 	<slot id="slot6" class= "slot">
-			<input class="storage" type="text" id="input" placeholder="Enter Stock...">
 			<button id= "addButton" > Add </button>
 			<span id = "hiddenSpan">
     			<label for="dropdown"> </label>
@@ -81,9 +100,12 @@
 				<option value= "information"> information </option>
 				</select>	
 			</span>
+			<div id="storage" class="storage">
+				<p id="symbol">Placeholder symbol.</p>
+			<p id="price">Placeholder price.</p>
+		</div>
 	</slot>
 	<slot id="slot7" class= "slot">
-			<input class="storage" type="text" id="input" placeholder="Enter Stock...">
 			<button id= "addButton" > Add </button>
 			<span id = "hiddenSpan">
     			<label for="dropdown"> </label>
@@ -93,9 +115,12 @@
 				<option value= "information"> information </option>
 				</select>	
 			</span>
+			<div id="storage" class="storage">
+				<p id="symbol">Placeholder symbol.</p>
+			<p id="price">Placeholder price.</p>
+		</div>
 	</slot>
 	<slot id="slot8"class= "slot">
-			<input class="storage" type="text" id="input" placeholder="Enter Stock...">
 			<button id= "addButton" > Add </button>
 			<span id = "hiddenSpan">
     			<label for="dropdown"> </label>
@@ -105,9 +130,12 @@
 				<option value= "information"> information </option>
 				</select>	
 			</span>
+			<div id="storage" class="storage">
+				<p id="symbol">Placeholder symbol.</p>
+			<p id="price">Placeholder price.</p>
+		</div>
 	</slot>
 	<slot id="slot9" class= "slot">
-			<input class="storage" type="text" id="input" placeholder="Enter Stock...">
 			<button id= "addButton" > Add </button>
 			<span id = "hiddenSpan">
     			<label for="dropdown"> </label>
@@ -117,9 +145,12 @@
 				<option value= "information"> information </option>
 				</select>	
 			</span>
+			<div id="storage" class="storage">
+				<p id="symbol">Placeholder symbol.</p>
+			<p id="price">Placeholder price.</p>
+		</div>
 	</slot>
 	<slot id="slot10" class= "slot">
-			<input class="storage" type="text" id="input" placeholder="Enter Stock...">
 			<button id= "addButton" > Add </button>
 			<span id = "hiddenSpan">
     			<label for="dropdown"> </label>
@@ -129,7 +160,12 @@
 				<option value= "information"> information </option>
 				</select>	
 			</span>
+			<div id="storage"class="storage">
+				<p id="symbol">Placeholder symbol.</p>
+			<p id="price">Placeholder price.</p>
+		</div>
 	</slot>
+
 
 </body>
 </html>
