@@ -1,34 +1,171 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<title>Stocks Program</title>
+	<script src="script.js" defer></script>
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
 <body>
 	<h1> Simple Stock Program </h1>
 		<p> Stocks n Stuff </p>
-
 	<div id="search-box">
 		<form id="search-stock">
 		<input type="text" name="symbol" id="search-bar" placeholder="Search by symbol">
 		<button type= "submit">Search</button>
-		<button id= "addButton" > Add </button>
-		<button id= "deleteButton"  > Delete </button>
-		<button id= "updateButton"  > Update </button>
 		</form>
 	</div>
-	<div class="slot"> 
-		<h2> Current Stock</h2>
-		<p id ="slot1-stock"> </p>
-	</div>
-	<div>
-		<slot id = "slot1">
-			<h2>Slot 1</h2>
+	<slot id="slot1" class= "slot">		
+		<button id= "addButton" > Add </button>
+		<span id = "hiddenSpan">
+    		<label for="dropdown"> </label>
+			<select name= "dropdown" id="dropdown">
+			<option value= "delete"> delete </option>
+			<option value= "update"> update </option>
+			<option value= "information"> information </option>
+			</select>	
+		</span>
+		<div id="storage" class="storage">
+				<p id="symbol">Placeholder symbol.</p>
+			<p id="price">Placeholder price.</p>
+		</div>
 		</slot>
-	</div>
-	<div>
-		<slot id = "slot2">
-			<h2>Slot 2</h2>
-		</slot>
-	</div>
-<script src="script.js" defer></script>
-<link rel="stylesheet" href="style.css">
+	<slot id="slot2" class= "slot">
+		<button id= "addButton" > Add </button>
+			<span id = "hiddenSpan">
+    			<label for="dropdown"> </label>
+				<select name= "dropdown" id="dropdown">
+				<option value= "delete"> delete </option>
+				<option value= "update"> update </option>
+				<option value= "information"> information </option>
+				</select>	
+			</span>
+			<div id="storage" class="storage">
+				<p id="symbol">Placeholder symbol.</p>
+			<p id="price">Placeholder price.</p>
+		</div>
+	</slot>
+	<slot id="slot3" class= "slot">
+			<button id= "addButton" > Add </button>
+			<span id = "hiddenSpan">
+    			<label for="dropdown"> </label>
+				<select name= "dropdown" id="dropdown">
+				<option value= "delete"> delete </option>
+				<option value= "update"> update </option>
+				<option value= "information"> information </option>
+				</select>	
+			</span>
+			<div id="storage" class="storage">
+				<p id="symbol">Placeholder symbol.</p>
+			<p id="price">Placeholder price.</p>
+		</div>
+	</slot>
+	<slot id="slot4" class= "slot">
+			<button id= "addButton" > Add </button>
+			<span id = "hiddenSpan">
+    			<label for="dropdown"> </label>
+				<select name= "dropdown" id="dropdown">
+				<option value= "delete"> delete </option>
+				<option value= "update"> update </option>
+				<option value= "information"> information </option>
+				</select>	
+			</span>
+			<div id="storage" class="storage">
+			<p id="symbol">Placeholder symbol.</p>
+			<p id="price">Placeholder price.</p>
+		</div>
+	</slot>
+	<slot id="slot5" class= "slot">
+			<button id= "addButton" > Add </button>
+			<span id = "hiddenSpan">
+    			<label for="dropdown"> </label>
+				<select name= "dropdown" id="dropdown">
+				<option value= "delete"> delete </option>
+				<option value= "update"> update </option>
+				<option value= "information"> information </option>
+				</select>	
+			</span>
+			<div id="storage" class="storage">
+				<p id="symbol">Placeholder symbol.</p>
+			<p id="price">Placeholder price.</p>
+		</div>
+	</slot>
+	<slot id="slot6" class= "slot">
+			<button id= "addButton" > Add </button>
+			<span id = "hiddenSpan">
+    			<label for="dropdown"> </label>
+				<select name= "dropdown" id="dropdown">
+				<option value= "delete"> delete </option>
+				<option value= "update"> update </option>
+				<option value= "information"> information </option>
+				</select>	
+			</span>
+			<div id="storage" class="storage">
+				<p id="symbol">Placeholder symbol.</p>
+			<p id="price">Placeholder price.</p>
+		</div>
+	</slot>
+	<slot id="slot7" class= "slot">
+			<button id= "addButton" > Add </button>
+			<span id = "hiddenSpan">
+    			<label for="dropdown"> </label>
+				<select name= "dropdown" id="dropdown">
+				<option value= "delete"> delete </option>
+				<option value= "update"> update </option>
+				<option value= "information"> information </option>
+				</select>	
+			</span>
+			<div id="storage" class="storage">
+				<p id="symbol">Placeholder symbol.</p>
+			<p id="price">Placeholder price.</p>
+		</div>
+	</slot>
+	<slot id="slot8"class= "slot">
+			<button id= "addButton" > Add </button>
+			<span id = "hiddenSpan">
+    			<label for="dropdown"> </label>
+				<select name= "dropdown" id="dropdown">
+				<option value= "delete"> delete </option>
+				<option value= "update"> update </option>
+				<option value= "information"> information </option>
+				</select>	
+			</span>
+			<div id="storage" class="storage">
+				<p id="symbol">Placeholder symbol.</p>
+			<p id="price">Placeholder price.</p>
+		</div>
+	</slot>
+	<slot id="slot9" class= "slot">
+			<button id= "addButton" > Add </button>
+			<span id = "hiddenSpan">
+    			<label for="dropdown"> </label>
+				<select name= "dropdown" id="dropdown">
+				<option value= "delete"> delete </option>
+				<option value= "update"> update </option>
+				<option value= "information"> information </option>
+				</select>	
+			</span>
+			<div id="storage" class="storage">
+				<p id="symbol">Placeholder symbol.</p>
+			<p id="price">Placeholder price.</p>
+		</div>
+	</slot>
+	<slot id="slot10" class= "slot">
+			<button id= "addButton" > Add </button>
+			<span id = "hiddenSpan">
+    			<label for="dropdown"> </label>
+				<select name= "dropdown" id="dropdown">
+				<option value= "delete"> delete </option>
+				<option value= "update"> update </option>
+				<option value= "information"> information </option>
+				</select>	
+			</span>
+			<div id="storage"class="storage">
+				<p id="symbol">Placeholder symbol.</p>
+			<p id="price">Placeholder price.</p>
+		</div>
+	</slot>
+
 
 </body>
 </html>
