@@ -1,3 +1,15 @@
+// initializing variables for stock slots
+let stock1 = "";
+let stock2 = "";
+let stock3 = "";
+let stock4 = "";
+let stock5 = "";
+let stock6 = "";
+let stock7 = "";
+let stock8 = "";
+let stock9 = "";
+let stock10 = "";
+
 //handle the submit button
 const form = document.querySelector("#search-stock");	
 form.addEventListener("submit", handleSubmit);
@@ -63,6 +75,46 @@ yaxis: {
 },
 };
 
+async function getCurrentPrice() {
+	const data = await $.getJSON();
+	return {
+		
+	}
+}
+
+
+//function to get the current price of a stock
+/*const getCurrentPrice =  (stockSymbol) => {
+	let call = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + stockSymbol + "&apikey=TQEYVSSUFEDJAQU5";
+	let result = "";
+	
+	$.getJSON(call)
+	.done(function(data){
+		result = data["Global Quote"]["05. price"];
+	});
+	return result;
+};*/
+
+//function to add a stock to an empty stock slot
+const addStock = (slotNum) => {
+	let input = document.getElementById("search-bar").value;
+	let call = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + input + "&apikey=TQEYVSSUFEDJAQU5";
+	
+	$.getJSON(call)
+	.done(function(data){
+		let price = data["Global Quote"]["05. price"];
+		let symbol = data["Global Quote"]["01. symbol"];
+		
+		let slotID = "slot" + slotNum;
+		document.getElementById(slotID).querySelector("#symbol").innerHTML = symbol;
+		document.getElementById(slotID).querySelector("#price").innerHTML = price;
+		
+		//PUT WAY TO ASSIGN SYMBOL TO CORRECT STOCK VAR HERE
+		
+	});
+};
+
+
 const storageInput = document.querySelector('.storage');
 const text = document.querySelector('.text');
 const button = document.querySelector('.addStock');
@@ -87,6 +139,8 @@ document.getElementById("search-stock").addEventListener("submit", function(even
 
 
 //////////////////////////////////////////////////////////
+
+
 
 if (storageInput)
 {
