@@ -140,6 +140,17 @@ document.getElementById("search-stock").addEventListener("submit", function(even
 
 //////////////////////////////////////////////////////////
 
+let slot = ["slot1", "slot2", "slot3", "slot4", "slot5", "slot6", "slot7", "slot8", "slot9", "slot10"];
+localStorage.setItem('slot', JSON.stringify(slot));
+
+
+//get 
+const slotLocalStorage = localstorage.getItem('slot');
+if (slotLocalStorage && slotLocalStorage.length)
+{
+    const localStorageValue = JSON.parse(slotLocalSlot) 
+}
+
 
 
 if (storageInput)
