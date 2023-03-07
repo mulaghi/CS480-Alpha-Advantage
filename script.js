@@ -63,3 +63,41 @@ yaxis: {
 },
 };
 
+
+
+//////////////////////////////////////////////////////////
+//Search Function
+
+document.getElementById("search-stock").addEventListener("submit", function(event) {
+	event.preventDefault();
+	const symbol = document.getElementById("search-bar").value;
+	fetch(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${symbol}&apikey=3C7FVRDGXUUJAQIO`)
+	  .then(response => response.json())
+	  .then(data => {
+		if (data.bestMatches.length > 0) {
+		  alert(`${symbol} is a valid stock symbol!`);
+		} else {
+		  alert(`${symbol} is not a valid stock symbol.`);
+		}
+	  });
+  });
+
+
+//////////////////////////////////////////////////////////
+
+
+//set
+let slot = ["slot1", "slot2", "slot3", "slot4", "slot5", "slot6", "slot7", "slot8", "slot9", "slot10"];
+localStorage.setItem('slot', JSON.stringify(slot));
+
+
+//get 
+const slotLocalStorage = localstorage.getItem('slot');
+if (slotLocalStorage && slotLocalStorage.length)
+{
+	const localStorageValue = JSON.parse(slotLocalSlot) 
+}
+
+
+
+
