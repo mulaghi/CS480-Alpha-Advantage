@@ -126,11 +126,14 @@ const storedInput = localStorage.getItem('slot1');
 document.getElementById("search-stock").addEventListener("submit", function(event) {
 	event.preventDefault();
 	const symbol = document.getElementById("search-bar").value;
-	fetch(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${symbol}&apikey=3C7FVRDGXUUJAQIO`)
+	const url = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${symbol}&apikey=3C7FVRDGXUUJAQIO`;
+  
+	fetch(url)
 	  .then(response => response.json())
 	  .then(data => {
-		if (data.bestMatches.length > 0) {
-		  alert(`${symbol} is a valid stock symbol!`);
+		const matches = data.bestMatches.filter(item => item['1. symbol'] === symbol);
+		if (matches.length > 0) {
+		  alert(`${symbol} is a valid stock symbol.`);
 		} else {
 		  alert(`${symbol} is not a valid stock symbol.`);
 		}
