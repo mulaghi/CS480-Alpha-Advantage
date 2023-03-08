@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Stocks Program</title>
+	<script src="script1.js" defer></script>
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+	<link rel="stylesheet" href="style1.css">
+</head>
+<body>
+	<div class="banner">
+	<h1> Simple Stock Program </h1>
+		<h1> Stocks n Stuff </h1>
+	</div>
+	<form class = back>
+ 		<input type="button" value="Go back!" onclick="history.back()">
+	</form>
+
+<slot id = "container" class="container">
+	<slot id = "chart"> Chart will go here</slot>
+</slot>
+
+<slot id="symbol" class="symbol">
+	<p>Symbol</p>
+</slot>
+<table>
+  <tr>
+    <th>Close</th>
+    <th>High</th>
+    <th>Low</th>
+  </tr>
+  <tr>
+    <td id="close">C</td>
+    <td id="high">H</td>
+    <td id="low">L</td>
+  </tr>
+  <tr>
+    <th>Mkt Cap</th>
+    <th>P/E(TTM)</th>
+    <th>Div & Yield</th>
+  </tr>
+  <tr>
+    <td id="cap">mC</td>
+    <td id="pe">pe</td>
+    <td id="divYield">dY</td>
+  </tr>
+  <tr>
+    <th>Prev. Close</th>
+    <th>52 Wk. Low</th>
+    <th>52 Wk. High</th>
+  </tr>
+  <tr>
+    <td id="prevClose">pC</td>
+    <td id="52Low">52L</td>
+    <td id="52high">52H</td>
+  </tr>
+</table>
+</body>
+</html>
