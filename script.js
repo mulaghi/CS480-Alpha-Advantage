@@ -6,7 +6,6 @@ async function getCurrentPrice() {
 }
 
 
-
 //function to add a stock to an empty stock slot
 const addStock = (slotNum) => {
 	let input = document.getElementById("search-bar").value;
@@ -56,11 +55,6 @@ const updateStock = (slotNum) => {
 	});
 };
 
-
-const storageInput = document.querySelector('.storage');
-const text = document.querySelector('.text');
-const button = document.querySelector('.`addStock`');
-const storedInput = localStorage.getItem('slot1');
 
 //////////////////////////////////////////////////////////
 //Search Function
@@ -159,25 +153,6 @@ function handleInformation() {
 	API.get(`${BASE_URL}${symbol}`);
 }
 
-
-/*const graph = (slotNum) => {
-
-	let input = document.getElementById("search-bar").value;
-	let call = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + input + "&apikey=TQEYVSSUFEDJAQU5";
-	
-	$.getJSON(call)
-	.done(function(data){
-		let price = data["Global Quote"]["05. price"];
-		let symbol = data["Global Quote"]["01. symbol"];
-		
-		let slotID = "slot" + slotNum;
-		document.getElementById(slotID).querySelector("#symbol").innerHTML = symbol;
-		document.getElementById(slotID).querySelector("#price").innerHTML = price;
-		
-		slot[slotNum - 1] = symbol;
-	});
-};
-*/
 
 //set local storage
 let slot = ["slot1", "slot2", "slot3", "slot4", "slot5", "slot6", "slot7", "slot8", "slot9", "slot10"];
