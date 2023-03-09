@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang = "en">
 <head>
+  <meta charset = "utf-8">
 	<title>Stocks Program</title>
 	<script src="script.js" defer></script>
 	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+
 	<div class="banner">
 	<h1> Simple Stock Program </h1>
 		<h1> Stocks n Stuff </h1>
@@ -15,9 +19,10 @@
  		<input type="button" value="Go back!" onclick="history.back()">
 	</form>
 
-<slot id = "container" class="container">
-	<slot id = "chart"> Chart will go here</slot>
-</slot>
+  <div id="container">
+    <div id="chart"></div>
+  </div>
+  
 
 <slot id="symbol" class="symbol">
 	<p>Symbol</p>
