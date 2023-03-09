@@ -1,15 +1,3 @@
-// initializing variables for stock slots
-let stock1 = "";
-let stock2 = "";
-let stock3 = "";
-let stock4 = "";
-let stock5 = "";
-let stock6 = "";
-let stock7 = "";
-let stock8 = "";
-let stock9 = "";
-let stock10 = "";
-
 //handle the submit button
 const form = document.querySelector("#search-stock");	
 form.addEventListener("submit", handleSubmit);
@@ -82,21 +70,18 @@ async function getCurrentPrice() {
 	}
 }
 
-
-//function to get the current price of a stock
-/*const getCurrentPrice =  (stockSymbol) => {
-	let call = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + stockSymbol + "&apikey=TQEYVSSUFEDJAQU5";
-	let result = "";
+//function to delete a stock and empty a stock slot
+const deleteStock = (slotNum) => {
+	slot[slotNum - 1] = "";
 	
-	$.getJSON(call)
-	.done(function(data){
-		result = data["Global Quote"]["05. price"];
-	});
-	return result;
-};*/
+	let slotID = "slot" + slotNum;
+	document.getElementById(slotID).querySelector("#symbol").innerHTML = "Empty";
+	document.getElementById(slotID).querySelector("#price").innerHTML = "Empty";
+};
+	
 
-//function to add a stock to an empty stock slot
-const addStock = (slotNum) => {
+//function to update a stock slot with a new stock 
+const updateStock = (slotNum) => {
 	let input = document.getElementById("search-bar").value;
 	let call = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + input + "&apikey=TQEYVSSUFEDJAQU5";
 	
@@ -109,8 +94,7 @@ const addStock = (slotNum) => {
 		document.getElementById(slotID).querySelector("#symbol").innerHTML = symbol;
 		document.getElementById(slotID).querySelector("#price").innerHTML = price;
 		
-		//PUT WAY TO ASSIGN SYMBOL TO CORRECT STOCK VAR HERE
-		
+		slot[slotNum - 1] = symbol;
 	});
 };
 
