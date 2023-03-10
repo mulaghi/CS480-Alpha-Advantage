@@ -16,6 +16,7 @@ const deleteStock = (slotNum) => {
 	let slotID = "slot" + slotNum;
 	document.getElementById(slotID).querySelector("#symbol").innerHTML = "Empty";
 	document.getElementById(slotID).querySelector("#price").innerHTML = "Empty";
+	
 };
 	
 
@@ -44,12 +45,13 @@ const updateStock = (slotNum) => {
 			document.getElementById(slotID).querySelector("#symbol").innerHTML = symbol;
 			document.getElementById(slotID).querySelector("#price").innerHTML = price;
 			slot[slotNum - 1] = symbol;
+			
+			localStorage.setItem("Symbol1", symbol);
+			localStorage.setItem("Price1", price);
 
-			localStorage.setItem("symbol", document.getElementById(slotID).querySelector("#symbol").innerHTML = symbol);
-			localStorage.setItem("price", document.getElementById(slotID).querySelector("#price").innerHTML = price);
-
-			document.getElementById(slotID).querySelector("#symbol").innerHTML = localStorage.getItem("symbol");
-			document.getElementById(slotID).querySelector("#price").innerHTML = localStorage.getItem("price");
+			//localStorage.setItem("Symbol2", "");
+			//localStorage.setItem("Price2", ""); 
+			
 		}
 		
 	});
@@ -188,8 +190,8 @@ let options = {
 const graph = (slotNum) => 
 {
 	let slotID = "slot" + slotNum;
-	let symbol = slot[slotNum - 1];
-	symbol = "IBM";
+	let symbol = document.getElementById(slotID).querySelector("#symbol").innerHTML;	
+	slot[slotNum - 1] = symbol
 	API.get(`${BASE_URL}${symbol}`);
 }
 		
@@ -217,3 +219,10 @@ function handleInformation()
 //set local storage
 let slot = ["", "", "", "", "", "", "", "", "", ""];
 
+
+document.getElementById("storage1").querySelector("#symbol").innerHTML = localStorage.getItem("Symbol1");
+document.getElementById("storage1").querySelector("#price").innerHTML = localStorage.getItem("Price1");
+
+
+//document.getElementById("storage2").querySelector("#symbol").innerHTML = localStorage.getItem("Symbol2");
+//document.getElementById("storage2").querySelector("#price").innerHTML = localStorage.getItem("Price2");
