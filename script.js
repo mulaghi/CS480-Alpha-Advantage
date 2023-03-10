@@ -43,11 +43,18 @@ const updateStock = (slotNum) => {
 			let slotID = "slot" + slotNum;
 			document.getElementById(slotID).querySelector("#symbol").innerHTML = symbol;
 			document.getElementById(slotID).querySelector("#price").innerHTML = price;
-		
 			slot[slotNum - 1] = symbol;
+
+			localStorage.setItem("symbol", document.getElementById(slotID).querySelector("#symbol").innerHTML = symbol);
+			localStorage.setItem("price", document.getElementById(slotID).querySelector("#price").innerHTML = price);
+
+			document.getElementById(slotID).querySelector("#symbol").innerHTML = localStorage.getItem("symbol");
+			document.getElementById(slotID).querySelector("#price").innerHTML = localStorage.getItem("price");
 		}
 		
 	});
+
+
 };
 
 const getInfo = (slotNum) => {
@@ -75,8 +82,9 @@ const getInfo = (slotNum) => {
 		
 		document.getElementById("open").innerHTML = openPrice;
 		document.getElementById("close").innerHTML = closePrice;
+		
 	});
-	
+
 	// beta, pe ratio, and earnings per share call
 	call = "https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + symbol + "&apikey=TQEYVSSUFEDJAQU5";
 	$.getJSON(call)
@@ -177,32 +185,35 @@ let options = {
 	},
 	};
 
+const graph = (slotNum) => 
+{
+	let slotID = "slot" + slotNum;
+	let symbol = slot[slotNum - 1];
+	symbol = "IBM";
+	API.get(`${BASE_URL}${symbol}`);
+}
+		
 
+/*
 const graph = (slotNum) => 
 {
 	let slotID = "slot" + slotNum;
 	slotID.addEventListener("#information", handleInformation);
 }
-
-
-function handleInformation() {
-	event.preventDefault();
-	let slotID = "slot" + slotNum;
-	let symbol = document.getElementById(slotID).querySelector("#symbol").innerHTML;		
-	slot[slotNum - 1] = symbol
-	API.get(`${BASE_URL}${symbol}`);
+	
+function handleInformation()
+{
+		event.preventDefault();
+		let slotID = "slot" + slotNum;
+		let symbol = document.getElementById(slotID).querySelector("#symbol").innerHTML;		
+		slot[slotNum - 1] = symbol
+		API.get(`${BASE_URL}${symbol}`);
 }
+*/
+	
+
 
 
 //set local storage
 let slot = ["", "", "", "", "", "", "", "", "", ""];
-localStorage.setItem('slot', JSON.stringify(slot));
 
-//get local storage
-
-//get 
-const slotLocalStorage = localstorage.getItem('slot');
-if (slotLocalStorage && slotLocalStorage.length)
-{
-    const localStorageValue = JSON.parse(slotLocalSlot) 
-}
