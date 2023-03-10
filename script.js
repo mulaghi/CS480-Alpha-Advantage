@@ -5,29 +5,12 @@ async function getCurrentPrice() {
 	}
 }
 
-
-//function to add a stock to an empty stock slot
-const addStock = (slotNum) => {
-	let input = document.getElementById("search-bar").value;
-	let call = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + input + "&apikey=TQEYVSSUFEDJAQU5";
-	
-	$.getJSON(call)
-	.done(function(data){
-		let price = data["Global Quote"]["05. price"];
-		let symbol = data["Global Quote"]["01. symbol"];
-		
-		let slotID = "slot" + slotNum;
-		document.getElementById(slotID).querySelector("#symbol").innerHTML = symbol;
-		document.getElementById(slotID).querySelector("#price").innerHTML = price;
-		
-		slot[slotNum - 1] = symbol;
-		
-	});
-};
-
-
 //function to delete a stock and empty a stock slot
 const deleteStock = (slotNum) => {
+	/*
+		clear the global variable
+		set the innerHTMLs to default text or empty
+	*/
 	slot[slotNum - 1] = "";
 	
 	let slotID = "slot" + slotNum;
@@ -38,6 +21,12 @@ const deleteStock = (slotNum) => {
 
 //function to update a stock slot with a new stock 
 const updateStock = (slotNum) => {
+	/*
+		take input
+		make API call
+		override global var
+		override innerHTMLs
+	*/
 	let input = document.getElementById("search-bar").value;
 	let call = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + input + "&apikey=TQEYVSSUFEDJAQU5";
 	
@@ -46,20 +35,71 @@ const updateStock = (slotNum) => {
 		let price = data["Global Quote"]["05. price"];
 		let symbol = data["Global Quote"]["01. symbol"];
 		
-		let slotID = "slot" + slotNum;
-		document.getElementById(slotID).querySelector("#symbol").innerHTML = symbol;
-		document.getElementById(slotID).querySelector("#price").innerHTML = price;
+		if(price == undefined) {
+			let slotID = "slot" + slotNum;
+			document.getElementById(slotID).querySelector("#symbol").innerHTML = "Invalid Stock";
+			document.getElementById(slotID).querySelector("#price").innerHTML = "Please Try Again";
+		} else {
+			let slotID = "slot" + slotNum;
+			document.getElementById(slotID).querySelector("#symbol").innerHTML = symbol;
+			document.getElementById(slotID).querySelector("#price").innerHTML = price;
 		
-		//PUT WAY TO ASSIGN SYMBOL TO CORRECT STOCK VAR HERE
+			slot[slotNum - 1] = symbol;
+		}
 		
 	});
 };
 
+const getInfo = (slotNum) => {
+	let slotID = "slot" + slotNum;
+	let symbol = slot[slotNum - 1];
+	symbol = "IBM";
+	
+	let call = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&apikey=TQEYVSSUFEDJAQU5";
+	
+	//current price call
+	$.getJSON(call)
+	.done(function(data) {
+		let price = data["Global Quote"]["05. price"];
+		document.getElementById("currentPrice").innerHTML = price;
+	});
+	
+	//open and close price call
+	call = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" + symbol + "&interval=5min&apikey=TQEYVSSUFEDJAQU5";
+	$.getJSON(call)
+	.done(function(data) {
+		let time = data["Meta Data"]["3. Last Refreshed"];
+		
+		let openPrice = data["Time Series (5min)"][time]["1. open"];
+		let closePrice = data["Time Series (5min)"][time]["4. close"];
+		
+		document.getElementById("open").innerHTML = openPrice;
+		document.getElementById("close").innerHTML = closePrice;
+	});
+	
+	// beta, pe ratio, and earnings per share call
+	call = "https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + symbol + "&apikey=TQEYVSSUFEDJAQU5";
+	$.getJSON(call)
+	.done(function(data) {
+		let beta = data["Beta"];
+		let pe = data["PERatio"];
+		let eps = data["EPS"];
+		let name = data["Name"];
+		
+		//alert(beta);
+		
+		document.getElementById("beta").innerHTML = beta;
+		document.getElementById("pe").innerHTML = pe;
+		document.getElementById("eps").innerHTML = eps;
+		document.getElementById("symbol").innerHTML = name;
+	});
+	
+};
 
 //////////////////////////////////////////////////////////
 //Search Function
 
-document.getElementById("search-stock").addEventListener("submit", function(event) {
+/*document.getElementById("search-stock").addEventListener("submit", function(event) {
 	event.preventDefault();
 	const symbol = document.getElementById("search-bar").value;
 	fetch(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${symbol}&apikey=3C7FVRDGXUUJAQIO`)
@@ -71,7 +111,7 @@ document.getElementById("search-stock").addEventListener("submit", function(even
 		  alert(`${symbol} is not a valid stock symbol.`);
 		}
 	  });
-  });
+  });*/
 
 
 //////////////////////////////////////////////////////////
@@ -155,7 +195,7 @@ function handleInformation() {
 
 
 //set local storage
-let slot = ["slot1", "slot2", "slot3", "slot4", "slot5", "slot6", "slot7", "slot8", "slot9", "slot10"];
+let slot = ["", "", "", "", "", "", "", "", "", ""];
 localStorage.setItem('slot', JSON.stringify(slot));
 
 //get local storage
@@ -166,4 +206,3 @@ if (slotLocalStorage && slotLocalStorage.length)
 {
     const localStorageValue = JSON.parse(slotLocalSlot) 
 }
-
